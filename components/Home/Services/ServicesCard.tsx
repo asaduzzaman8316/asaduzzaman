@@ -7,7 +7,7 @@ type porpsData = {
 }
 function ServicesCard({ icon, name, desc }: porpsData) {
     return (
-        <div>
+        <div className='flex flex-col justify-center items-center text-center lg:text-start lg:justify-start lg:items-start'>
             <Image
                 src={icon}
                 width={60}

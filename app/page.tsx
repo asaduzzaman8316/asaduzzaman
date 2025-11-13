@@ -1,13 +1,37 @@
+'use client'
+import Blog from "@/components/Home/Blog/Blog";
+import Contact from "@/components/Home/Contact/Contact";
 import Hero from "@/components/Home/Hero/Hero";
+import Project from "@/components/Home/Project/Project";
 import Resume from "@/components/Home/Resume/Resume";
 import Services from "@/components/Home/Services/Services";
+import Skills from "@/components/Home/Skills/Skills";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    const initAOS = async () => {
+      await import('aos');
+      AOS.init({
+        duration: 1000,
+        easing: 'ease',
+        once: true,
+        anchorPlacement:'bottom-top'
+      })
+    }
+    initAOS()
+  }, [])
   return (
     <div className="overflow-hidden ">
       <Hero />
       <Services />
       <Resume />
+      <Project />
+      <Skills />
+      <Blog />
+      <Contact />
     </div>
   );
 }
