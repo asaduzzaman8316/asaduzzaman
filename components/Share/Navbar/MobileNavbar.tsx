@@ -26,7 +26,7 @@ function MobileNavbar({showNav, closeNav}: props) {
                             </Link>
                         )
                     })}
-                    <CgClose onClick={closeNav} className='absolute cursor-pointer top-2 right-4 sm:size-8 size-6' />
+                    <CgClose onClick={closeNav} className='absolute cursor-pointer top-10 right-6 sm:size-8 size-8' />
                 </div>
             </div>
         </div>
