@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React from 'react'
+
 type porpsData = {
     icon: string,
     name: string,

@@ -5,7 +5,7 @@ import { FaBookOpenReader } from 'react-icons/fa6'
 
 function Resume() {
     return (
-        <div className='lg:w-[90%] sm:w-[70%] mt-6 mx-auto flex flex-col items-center justify-center '>
+        <div id='resume' className='lg:w-[90%] sm:w-[70%] mt-6 mx-auto flex flex-col items-center justify-center '>
 
             <div>
                 <h1 className='text-gray-200 text-3xl sm:text-4xl  font-semibold' >My <span className='text-cyan-300 '>Education</span></h1>

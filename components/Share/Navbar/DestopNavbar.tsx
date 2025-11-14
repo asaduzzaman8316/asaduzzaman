@@ -22,12 +22,12 @@ function DestopNavbar({openNav}:props) {
     return (
         <div className={`transition-all duration-300 h-[12vh] z-100 fixed w-full ${navBg ? 'bg-[#0f142ed9] shadow-md ': 'fixed'} `}>
             <div className='flex items-center h-full justify-between w-[90%] mx-auto'>
-                <div className='flex items-center space-x-2'>
+                <Link href={'/'} className='flex items-center space-x-2'>
                     <div className='size-10 bg-white rounded-full flex items-center justify-center flex-col'>
                         <FaCode className='size-5 text-black' />
                     </div>
                     <h1 className='text-lg hidden sm:block md:text-2xl text-white font-bold'>Asaduzzaman</h1>
-                </div>
+                </Link>
                 <div className='hidden lg:flex items-center space-x-10'>
                     {
                         Navlinks.map((link) => {
@@ -35,6 +35,7 @@ function DestopNavbar({openNav}:props) {
                                 <Link
                                     href={link.url}
                                     key={link.id}
+                                    scroll={true}
                                     className='hover:text-cyan-300 text-base text-white font-medium transition-all duration-500 hover:-translate-y-1 ) {
                                     }'
                                 >
@@ -45,7 +46,7 @@ function DestopNavbar({openNav}:props) {
                     }
                 </div>
                 <div className='flex items-center space-x-4'>
-                    <a href='/public/resume.pdf' download className='px-8 py-3.5 cursor-pointer rounded-lg bg-blue-800 hover:bg-blue-900 transition-all duration-300 text-white flex items-center space-x-2'>
+                    <a href='/images/asad.pdf' download='Asaduzzaman-CV.pdf' className='px-8 py-3.5 cursor-pointer rounded-lg bg-blue-800 hover:bg-blue-900 transition-all duration-300 text-white flex items-center space-x-2'>
                         <BiDownload className='size-5' />
                         Download CV
                     </a>

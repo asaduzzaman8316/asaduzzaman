@@ -4,6 +4,7 @@ import { BsArrowRight } from 'react-icons/bs'
 
 import Typewriter from 'typewriter-effect'
 import ParticlesHero from './ParticleBancground'
+import Link from 'next/link'
 
 function Hero() {
     return (
@@ -33,7 +34,6 @@ function Hero() {
                         <Typewriter options={{
                             strings: [
                                 'Fontend Devloper',
-                                'Backend Devloper',
                                 'Web Devloper'
                             ],
                             autoStart: true,
@@ -45,14 +45,15 @@ function Hero() {
                         />
                     </span>
                 </h2>
-                <button
+                <Link
+                    href={'#projects'}
                     data-aos='fade-up' data-aos-delay='600'
                     className='mt-6 py-3 px-10 bg-blue-800 hover:bg-blue-900 transition-all duration-500 cursor-pointer rounded-full text-lg font-medium'>
                     <span>
                         See My Work
                     </span>
                     <BsArrowRight className='size-5 ml-2 inline-block' />
-                </button>
+                </Link>
             </div>
         </div>
     )

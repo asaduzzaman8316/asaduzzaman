@@ -7,7 +7,7 @@ import Resume from "@/components/Home/Resume/Resume";
 import Services from "@/components/Home/Services/Services";
 import Skills from "@/components/Home/Skills/Skills";
 import AOS from 'aos';
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
 import { useEffect } from "react";
 
 export default function Home() {
@@ -17,14 +17,14 @@ export default function Home() {
       AOS.init({
         duration: 1000,
         easing: 'ease',
-        once: true,
-        anchorPlacement:'bottom-top'
+        once: false,
+        anchorPlacement: 'bottom-top'
       })
     }
     initAOS()
   }, [])
   return (
-    <div className="overflow-hidden ">
+    <div id="home" className="overflow-hidden ">
       <Hero />
       <Services />
       <Resume />

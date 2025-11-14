@@ -1,34 +1,47 @@
 import Image from 'next/image'
-import React from 'react'
+
 type Props = {
     icon: string,
     title: string,
     para: string,
     live: string,
     github: string,
-    delay:number
+    delay: number
 }
-function ProjectCard({ icon, title, para, live, github,delay }: Props) {
+function ProjectCard({ icon, title, para, live, github, delay }: Props) {
     return (
         <div
-            data-aos='zoom-in-right'  data-aos-delay={delay}
+            data-aos='zoom-in-right' data-aos-delay={delay}
             className='relative group duration-500 transition-all'>
             <a href={live}>
-                <Image
-                    src={icon}
-                    width={600}
-                    height={600}
-                    alt='Asad-Mart, Asad-Shop, e-commerce'
-                    className='rounded-md'
-                />
+                
+                <div className='relative overflow-hidden h-72 rounded-xl'>
+                    <Image
+                        src={icon}
+                        width={700}
+                        height={500}
+                        alt='blog image'
+                        className='object-cover rounded-xl'
+                    />
+
+                    <div className={`bg-cover transition-all duration-500 absolute top-0 hover:scale-110 `}>
+                        <Image
+                            src={icon}
+                            width={700}
+                            height={500}
+                            alt='blog image'
+                            className='object-cover  '
+                        />
+                    </div>
+                </div>
             </a>
-            <div className='py-3'>
+            <div className='py-3 '>
                 <a
-                    className='text-white hover:text-cyan-300 duration-500 font-semibold  text-2xl sm:text-3xl lg:text-2xl'
+                    className='text-white hover:text-cyan-300 duration-500 font-semibold  text-2xl sm:text-3xl  lg:text-2xl'
                     target='-blank'
                     href={live}
                 >{title}</a>
-                <div className='flex  items-center gap-10'>
+                <div className='flex mt-4 items-center gap-10'>
                     <p className='text-gray-300 font-medium text-xl '>{para}</p>
                     <a
                         target='_blank'

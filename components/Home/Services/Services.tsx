@@ -1,9 +1,9 @@
-import React from 'react'
+
 import ServicesCard from './ServicesCard'
 
 function Services() {
     return (
-        <div className='py-16 mx-auto '>
+        <div id='services' className='py-16 mx-auto '>
             <div className=' '>
                 <h1 className='text-2xl md:text-4xl xl:text-5xl text-white font-bold text-center'>
                     Colleborate with brand <br />
@@ -17,28 +17,28 @@ function Services() {
                         <ServicesCard
                             icon="/images/s1.png"
                             name='UI and UX'
-                            desc="Designing interfaces that are intuitive, efficient, and enjoyable to use."
+                            desc="Creating smooth, logical user flows and visually appealing screen layouts"
                         />
                     </div>
                     <div data-aos='fade-right' data-aos-delay='100'>
                         <ServicesCard
                             icon="/images/s2.png"
-                            name='Web and Mobile App'
-                            desc="Designing interfaces that are intuitive, efficient, and enjoyable to use."
+                            name='Web App'
+                            desc="Developing the actual application that runs on browsers (web)"
                         />
                     </div>
                     <div data-aos='fade-right' data-aos-delay='200'>
                         <ServicesCard
                             icon="/images/s3.png"
                             name='Design & Creative'
-                            desc="Designing interfaces that are intuitive, efficient, and enjoyable to use."
+                            desc="This includes logos, color palettes, imagery, and overall aesthetic direction."
                         />
                     </div>
-                    <div data-aos='fade-right'  data-aos-delay='300'>
+                    <div data-aos='fade-right' data-aos-delay='300'>
                         <ServicesCard
                             icon="/images/s4.png"
                             name='Development'
-                            desc="Designing interfaces that are intuitive, efficient, and enjoyable to use."
+                            desc="The technical process of turning designs into a functioning product"
                         />
                     </div>
 

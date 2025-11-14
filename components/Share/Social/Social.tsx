@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import React from 'react'
 import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa'
 import { FaLinkedin } from 'react-icons/fa6'
 

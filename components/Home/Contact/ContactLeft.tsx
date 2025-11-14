@@ -1,5 +1,5 @@
 import Social from '@/components/Share/Social/Social'
-import React from 'react'
+
 import { BiEnvelope, BiMap, BiPhone } from 'react-icons/bi'
 
 function ContactLeft() {
