@@ -19,18 +19,18 @@ function Hero() {
                     data-aos='fade-up'
                     alt='Hero image'
                     /> */}
-                <Lanyard position={[0, 0, 16]} gravity={[0, -40, 0]}  />
-                <div className='flex flex-col items-center absolute inset-x-0 bottom-44 md:bottom-20 mx-auto max-w-8xl  px-2'>
+                <Lanyard position={[0, 0, 16]} gravity={[0, -40, 0]} />
+                <div className='flex flex-col items-center absolute inset-x-0 bottom-44  xl:bottom-10  2xl:bottom-28 md:bottom-20 mx-auto max-w-8xl  px-2'>
                     <h1
                         data-aos='fade-up' data-aos-delay='200'
-                        className='text-2xl sm:text-4xl md:text-5xl lg:text-6xl   text-center font-bold tracking-wide '>
+                        className='text-2xl sm:text-4xl md:text-5xl lg:text-4xl 2xl:text-6xl  text-center font-bold tracking-wide '>
                         Creating web products,<br />brands,
                         <span
                             className='text-cyan-200'> and experiences</span>
                     </h1>
                     <h2
                         data-aos='fade-up' data-aos-delay='400'
-                        className='mt-5 text-sm px-2 text-center sm:text-2xl font-medium flex items-center'>
+                        className='mt-5 text-sm px-2 text-center sm:text-xl font-medium flex items-center'>
                         Hi! I&apos;m Asaduzzaman - A Passionate
                         <span className='text-cyan-200 font-bold  '>
                             <Typewriter options={{

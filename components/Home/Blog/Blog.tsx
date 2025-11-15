@@ -3,7 +3,7 @@ import BlogCard from './BlogCard'
 
 function Blog() {
     return (
-        <div id='blog' className='lg:w-[70%] mx-auto px-4 lg:px-0 py-16'>
+        <div id='blog' className='container lg:px-14 mx-auto px-4  py-16'>
             <h1 className='text-gray-200 text-center text-3xl sm:text-4xl  font-semibold' >My latest <span className='text-cyan-300 '>Blogs</span></h1>
             <div className='grid lg:grid-cols-3 grid-cols-1 gap-5 mt-16'>
                 <div data-aos='fade-right' data-aos-anchor-placement='top-bottom'

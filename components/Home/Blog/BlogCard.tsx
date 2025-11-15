@@ -12,7 +12,7 @@ type Props = {
 function BlogCard({ id, date, name, image }: Props) {
     return (
         <div>
-            <div className='relative overflow-hidden h-70 rounded-xl'>
+            <div className='relative overflow-hidden h-auto rounded-xl'>
                 <Image
                     src={image}
                     width={600}

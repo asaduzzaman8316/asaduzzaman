@@ -5,14 +5,14 @@ function Services() {
     return (
         <div id='services' className='py-16 mx-auto '>
             <div className=' '>
-                <h1 className='text-2xl md:text-4xl xl:text-5xl text-white font-bold text-center'>
+                <h1 className='text-2xl md:text-3xl xl:text-4xl text-white font-bold text-center'>
                     Colleborate with brand <br />
                     and agencies to create <br />
                     impactful results
                 </h1>
                 <div
 
-                    className='w-[90%] sm:w-[70%] mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 mt-20 items-center '>
+                    className='container sm:px-14 mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 mt-20 items-center '>
                     <div data-aos='fade-right' >
                         <ServicesCard
                             icon="/images/s1.png"

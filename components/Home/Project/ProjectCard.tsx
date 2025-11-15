@@ -15,7 +15,7 @@ function ProjectCard({ icon, title, para, live, github, delay }: Props) {
             className='relative group duration-500 transition-all'>
             <a href={live}>
                 
-                <div className='relative overflow-hidden h-72 rounded-xl'>
+                <div className='relative overflow-hidden h-auto rounded-xl'>
                     <Image
                         src={icon}
                         width={700}
@@ -37,16 +37,16 @@ function ProjectCard({ icon, title, para, live, github, delay }: Props) {
             </a>
             <div className='py-3 '>
                 <a
-                    className='text-white hover:text-cyan-300 duration-500 font-semibold  text-2xl sm:text-3xl  lg:text-2xl'
+                    className='text-white hover:text-cyan-300 duration-500 font-semibold  text-2xl sm:text-3xl  lg:text-xl'
                     target='-blank'
                     href={live}
                 >{title}</a>
                 <div className='flex mt-4 items-center gap-10'>
-                    <p className='text-gray-300 font-medium text-xl '>{para}</p>
+                    <p className='text-gray-300 font-medium text-lg '>{para}</p>
                     <a
                         target='_blank'
                         href={github}
-                        className='bg-blue-800 duration-500 transition-all   px-8 py-1.5 rounded-md hover:bg-blue-900 text-white uppercase '
+                        className='bg-blue-800 duration-500 transition-all   px-6 py-1 rounded-md hover:bg-blue-900 text-white uppercase '
                     >GitHub</a>
                 </div>
             </div>
