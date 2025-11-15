@@ -11,7 +11,7 @@ const Lanyard = dynamic(() => import('@/app/Animation/Lanyard'), {
     ssr: false,
     loading: () => (
         <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-48 h-48 bg-blue-500/10 rounded-full animate-pulse" />
+            <div className="w-56 h-80 bg-blue-500/10 rounded-md animate-pulse" />
         </div>
     )
 })
@@ -57,7 +57,7 @@ function Hero() {
                 {shouldRenderLanyard && (
                     <Suspense fallback={<div className="w-full h-full" />}>
                         <div style={{
-                            opacity: isScrolling ? 0.3 : 1,
+                            opacity: isScrolling ? 0.7 : 1,
                             transition: 'opacity 0.3s ease',
                             pointerEvents: isScrolling ? 'none' : 'auto'
                         }}>

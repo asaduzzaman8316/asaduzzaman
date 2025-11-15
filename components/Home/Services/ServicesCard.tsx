@@ -13,6 +13,7 @@ function ServicesCard({ icon, name, desc }: porpsData) {
                 width={60}
                 height={60}
                 alt={name}
+                className='hover:-translate-y-2 duration-500'
             />
             
                 <h1 className='mt-6 text-xl md:text-2xl font-bold text-gray-200'>{name}</h1>

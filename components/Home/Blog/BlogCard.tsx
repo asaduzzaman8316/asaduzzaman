@@ -11,7 +11,7 @@ type Props = {
 }
 function BlogCard({ id, date, name, image }: Props) {
     return (
-        <div>
+        <Link href={`/${id}`}>
             <div className='relative overflow-hidden h-auto rounded-xl'>
                 <Image
                     src={image}
@@ -34,10 +34,10 @@ function BlogCard({ id, date, name, image }: Props) {
 
             <div className='mt-3 space-y-4'>
                 <p className='mt-4 text-gray-400 font-medium text-base sm:text-lg'>{date}</p>
-                <Link href={`/${id}`}
+                <p
                     className='text-white  text-lg sm:text-xl  font-bold duration-300 hover:text-cyan-300
                 '
-                >{name}</Link>
+                >{name}</p>
 
                 <div className='mt-4 flex gap-2 items-center'>
                     <Blogtag name='Tailwind' />
@@ -45,7 +45,7 @@ function BlogCard({ id, date, name, image }: Props) {
                     <Blogtag name='React' />
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
