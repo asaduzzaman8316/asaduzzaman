@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
 import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei';
 import {
@@ -48,16 +48,89 @@ export default function Lanyard({
   fov = 20,
   transparent = true
 }: LanyardProps) {
+  const [isVisible, setIsVisible] = useState(true);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const canvasRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Pause animation when hero section is not visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsVisible(entry.isIntersecting);
+        });
+      },
+      { 
+        threshold: 0.1,
+        rootMargin: '100px'
+      }
+    );
+
+    const heroSection = document.getElementById('hero');
+    if (heroSection) {
+      observer.observe(heroSection);
+    }
+
+    // Detect scrolling to reduce complexity
+    let scrollTimeout: NodeJS.Timeout;
+    const handleScroll = () => {
+      setIsScrolling(true);
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsScrolling(false);
+      }, 150);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(scrollTimeout);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Don't render when not visible - major performance boost
+  if (!isVisible) {
+    return <div ref={canvasRef} className="relative z-0 w-full h-screen" />;
+  }
+
   return (
-    <div className="relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center">
+    <div 
+      ref={canvasRef}
+      className="relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center"
+      style={{
+        opacity: isScrolling ? 0.5 : 1,
+        transition: 'opacity 0.2s ease',
+        pointerEvents: isScrolling ? 'none' : 'auto'
+      }}
+    >
       <Canvas
         camera={{ position, fov }}
-        gl={{ alpha: transparent }}
-        onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
+        gl={{ 
+          alpha: transparent,
+          antialias: false, // Disable for better performance
+          powerPreference: 'high-performance',
+          stencil: false,
+          depth: true
+        }}
+        dpr={[1, 1.5]} // Limit pixel ratio
+        performance={{ min: 0.5 }} // Allow frame drops if needed
+        frameloop={isVisible && !isScrolling ? 'always' : 'demand'} // Stop when scrolling
+        onCreated={({ gl }) => {
+          gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1);
+          // Optimize renderer
+          gl.toneMapping = THREE.ACESFilmicToneMapping;
+          gl.toneMappingExposure = 1;
+        }}
       >
         <ambientLight intensity={Math.PI} />
-        <Physics gravity={gravity} timeStep={1 / 60}>
-          <Band />
+        <Physics 
+          gravity={gravity} 
+          timeStep={1 / 60}
+          paused={isScrolling} // Pause physics when scrolling
+        >
+          <Band isScrolling={isScrolling} />
         </Physics>
 
         <Environment blur={0.75}>
@@ -98,9 +171,10 @@ export default function Lanyard({
 interface BandProps {
   maxSpeed?: number;
   minSpeed?: number;
+  isScrolling?: boolean;
 }
 
-function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
+function Band({ maxSpeed = 50, minSpeed = 0, isScrolling = false }: BandProps) {
   const band = useRef<THREE.Mesh>(null);
   const fixed = useRef<RapierRigidBody>(null!);
   const j1 = useRef<RapierRigidBody>(null!);
@@ -108,19 +182,19 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
   const j3 = useRef<RapierRigidBody>(null!);
   const card = useRef<RapierRigidBody>(null!);
 
-  const vec = new THREE.Vector3();
-  const ang = new THREE.Vector3();
-  const rot = new THREE.Vector3();
-  const dir = new THREE.Vector3();
+  // Memoize vectors to avoid recreating on each frame
+  const vec = useMemo(() => new THREE.Vector3(), []);
+  const ang = useMemo(() => new THREE.Vector3(), []);
+  const rot = useMemo(() => new THREE.Vector3(), []);
+  const dir = useMemo(() => new THREE.Vector3(), []);
 
-  const segmentProps = {
+  const segmentProps = useMemo(() => ({
     canSleep: true,
     colliders: false as const,
     angularDamping: 4,
     linearDamping: 4
-  };
+  }), []);
 
-  // Define types for the GLTF model
   type CardGLTF = {
     nodes: {
       card: THREE.Mesh;
@@ -133,20 +207,23 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
     };
   };
 
-  // Use public assets via URL
   const { nodes, materials } = useGLTF('/assets/card1.glb') as unknown as CardGLTF;
   const texture = useTexture('/assets/lanyard.png', (tex) => {
     tex.wrapS = THREE.RepeatWrapping;
     tex.wrapT = THREE.RepeatWrapping;
+    // Optimize texture
+    tex.minFilter = THREE.LinearFilter;
+    tex.magFilter = THREE.LinearFilter;
+    tex.generateMipmaps = false;
   });
 
-  // Create curve with 'chordal' type in constructor
-  const curve = useRef(
-    new THREE.CatmullRomCurve3(
+  const curve = useMemo(
+    () => new THREE.CatmullRomCurve3(
       [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()],
       false,
       'chordal'
-    )
+    ),
+    []
   );
 
   const [dragged, drag] = useState<false | THREE.Vector3>(false);
@@ -167,7 +244,6 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
     return (): void => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Rope joints + spherical joint
   useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
   useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
   useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
@@ -186,6 +262,9 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
   }, [hovered, dragged]);
 
   useFrame((state, delta) => {
+    // Skip heavy calculations when scrolling
+    if (isScrolling) return;
+
     if (dragged && typeof dragged !== 'boolean') {
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
       dir.copy(vec).sub(state.camera.position).normalize();
@@ -199,7 +278,6 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
     }
     
     if (fixed.current && j1.current && j2.current && j3.current && card.current) {
-      // Add lerped property type
       [j1, j2].forEach(ref => {
         const current = ref.current as RapierRigidBody & { lerped?: THREE.Vector3 };
         if (!current.lerped) {
@@ -212,7 +290,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
         );
       });
 
-      const c = curve.current;
+      const c = curve;
       const j3Current = j3.current as RapierRigidBody & { lerped?: THREE.Vector3 };
       const j2Current = j2.current as RapierRigidBody & { lerped?: THREE.Vector3 };
       const j1Current = j1.current as RapierRigidBody & { lerped?: THREE.Vector3 };
@@ -227,12 +305,11 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
       c.points[2].copy(t1);
       c.points[3].copy(tf);
 
-      // Update meshline geometry points
       const geometry = band.current?.geometry as THREE.BufferGeometry & { 
         setPoints?: (points: THREE.Vector3[]) => void 
       };
       if (geometry?.setPoints) {
-        geometry.setPoints(c.getPoints(32));
+        geometry.setPoints(c.getPoints(isSmall ? 24 : 32)); // Fewer points on mobile
       }
 
       ang.copy(card.current.angvel());
@@ -295,7 +372,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
         <meshLineMaterial
           color="white"
           depthTest={false}
-          resolution={isSmall ? [1000, 2000] : [1000, 1000]}
+          resolution={isSmall ? [500, 1000] : [1000, 1000]} // Lower resolution on mobile
           useMap={true}
           map={texture}
           repeat={[-4, 1]}
