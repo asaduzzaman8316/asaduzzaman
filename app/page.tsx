@@ -25,6 +25,7 @@ export default function Home() {
   }, [])
   return (
     <div id="home" className="overflow-hidden ">
+      
       <Hero />
       <Services />
       <Resume />
