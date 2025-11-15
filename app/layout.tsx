@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Share/Navbar/Nav";
 import Footer from "@/components/Share/Footer/Footer";
 import ScrollToTop from "@/components/Share/ScrollToTop/ScrollToTop";
+import Script from "next/script";
 
 const font = Inter({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -28,6 +29,7 @@ export default function RootLayout({
       >
         <Nav />
         {children}
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
         <Footer />
         <ScrollToTop />
       </body>

@@ -11,7 +11,7 @@ const Lanyard = dynamic(() => import('@/app/Animation/Lanyard'), {
     ssr: false,
     loading: () => (
         <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-56 h-80 bg-blue-500/10 rounded-md animate-pulse" />
+            <div className="w-1 h-1 bg-blue-500/10 rounded-md animate-pulse" />
         </div>
     )
 })

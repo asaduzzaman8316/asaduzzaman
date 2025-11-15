@@ -1,5 +1,6 @@
 "use client"
-import { SiJavascript, SiNextdotjs, SiReact, SiTailwindcss, SiTypescript } from 'react-icons/si'
+import { SiCplusplus, SiJavascript, SiNextdotjs, SiReact, SiTailwindcss, SiTypescript } from 'react-icons/si'
+import { TbCircleLetterC } from 'react-icons/tb'
 import Tilt from 'react-parallax-tilt'
 function Skills() {
     const skils = [
@@ -27,6 +28,16 @@ function Skills() {
             name: 'Tailwind CSS',
             icon: <SiTailwindcss />,
             parcentage: 95
+        },
+        {
+            name: 'C',
+            icon: <TbCircleLetterC />,
+            parcentage: 96
+        },
+        {
+            name: 'C++',
+            icon: <SiCplusplus />,
+            parcentage: 95
         }
 
     ]
@@ -40,7 +51,7 @@ function Skills() {
                             <div
                                 data-aos='flip-right'
                                 data-aos-anchor-placement='top-bottom'
-                                data-aos-delay={i*100}
+                                data-aos-delay={i * 100}
                                 className='bg-[#14134145] text-center w-40 h-48 rounded-3xl flex flex-col items-center justify-center shadow-lg transition hover:scale-105'>
                                 <div className='text-5xl mb-4 text-gray-300'>
                                     {skill.icon}
