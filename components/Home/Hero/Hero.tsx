@@ -19,7 +19,7 @@ function Hero() {
                     data-aos='fade-up'
                     alt='Hero image'
                     /> */}
-                <Lanyard position={[0, 0, 16]} gravity={[0, -40, 0]} />
+                {/* <Lanyard position={[0, 0, 16]} gravity={[0, -40, 0]} /> */}
                 <div className='flex flex-col items-center absolute inset-x-0 bottom-44  xl:bottom-10  2xl:bottom-28 md:bottom-20 mx-auto max-w-8xl  px-2'>
                     <h1
                         data-aos='fade-up' data-aos-delay='200'
