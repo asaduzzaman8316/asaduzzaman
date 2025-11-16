@@ -2,6 +2,7 @@
 function ContactForm() {
   return (
     <div
+    data-aos='fade-up-left'
       className=' md:p-10 p-5 space-y-6  bg-[#131332] rounded-lg '>
       <input type="text" placeholder='Name' className='px-4 py-3.5 bg-[#353559] outline-none rounded-md w-full placeholder:text-white/70 text-gray-300' />
       <input type="text" placeholder='Email Address' className='px-4 py-3.5 bg-[#353559] outline-none rounded-md w-full placeholder:text-white/70 text-gray-300' />

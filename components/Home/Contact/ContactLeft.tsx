@@ -5,6 +5,7 @@ import { BiEnvelope, BiMap, BiPhone } from 'react-icons/bi'
 function ContactLeft() {
   return (
     <div
+    data-aos='fade-up-right'
       className=''>
       <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-200'>
         Schedule a call with me to see if I can help

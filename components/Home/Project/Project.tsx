@@ -3,7 +3,7 @@ import ProjectCard from './ProjectCard'
 
 function Project() {
     return (
-        <div id='projects' className='py-16 lg:w-[70%] mx-auto px-4 lg:px-0
+        <div id='projects' className='py-16 lg:w-[70%] mx-auto px-4  lg:px-0
         '>
             <h1 className='text-gray-200 text-center text-3xl sm:text-4xl  font-semibold' >A small selection of recent <br /> <span className='text-cyan-300 '>Projects</span></h1>
 

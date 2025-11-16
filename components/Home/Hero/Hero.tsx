@@ -66,7 +66,7 @@ function Hero() {
                     </Suspense>
                 )}
 
-                <div className='flex flex-col items-center absolute inset-x-0 bottom-44 xl:bottom-10 2xl:bottom-28 md:bottom-20 mx-auto max-w-8xl px-2 z-10'>
+                <div className='flex flex-col items-center absolute inset-x-0 bottom-14  mx-auto max-w-8xl px-2 z-10'>
                     <h1
                         data-aos='fade-up'
                         data-aos-delay='200'

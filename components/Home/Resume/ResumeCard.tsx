@@ -8,7 +8,9 @@ type Props = {
 }
 function ResumeCard({ Icon, role, date, dese }: Props) {
     return (
-        <div className='mb-6 px-4 lg:w-[80%]'>
+        <div
+        data-aos='zoom-in-down'
+         className='mb-6 px-4 lg:w-[80%]'>
             <div className='flex  items-start space-x-6 bg-blue-900/20 transition-all  p-4 sm:p-8 rounded-md w-full'>
                 <div className='sm:size-14 size-10 bg-blue-950 rounded-full flex items-center justify-center flex-col'>
                     <Icon className='sm:size-8 size-6 text-white' />

@@ -28,8 +28,8 @@ export default function Home() {
       
       <Hero />
       <Services />
-      <Resume />
       <Project />
+      <Resume />
       <Skills />
       <Blog />
       <Contact />

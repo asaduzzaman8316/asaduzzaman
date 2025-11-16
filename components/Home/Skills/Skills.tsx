@@ -42,7 +42,7 @@ function Skills() {
 
     ]
     return (
-        <div id='skills' className='text-white pb-16'>
+        <div id='skills' className='text-white py-16'>
             <h1 className='text-gray-200 text-center text-3xl sm:text-4xl  font-semibold' >My  <span className='text-cyan-300 '>Skills</span></h1>
             <div className='flex flex-wrap justify-center gap-12 mt-24'>
                 {
