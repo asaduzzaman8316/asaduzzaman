@@ -5,22 +5,22 @@ import Link from 'next/link'
 import { BiDownload } from 'react-icons/bi'
 import { HiBars3BottomRight } from 'react-icons/hi2'
 import { useEffect, useState } from 'react';
-type props ={
-    openNav: ()=> void;
+type props = {
+    openNav: () => void;
 }
 
-function DestopNavbar({openNav}:props) {
+function DestopNavbar({ openNav }: props) {
     const [navBg, setNavBg] = useState(false)
-    useEffect(()=>{
-        const  hnadler = ()=>{
-            if(window.scrollY >= 90) setNavBg(true);
-            if(window.scrollY < 90) setNavBg(false)
+    useEffect(() => {
+        const hnadler = () => {
+            if (window.scrollY >= 90) setNavBg(true);
+            if (window.scrollY < 90) setNavBg(false)
         };
         window.addEventListener('scroll', hnadler);
-        return ()=> window.removeEventListener('scroll', hnadler)
+        return () => window.removeEventListener('scroll', hnadler)
     }, [])
     return (
-        <div className={`transition-all duration-300 h-[12vh] z-100 fixed w-full ${navBg ? 'bg-[#0f142ed9] shadow-md ': 'fixed'} `}>
+        <div className={`transition-all duration-300 h-[12vh] z-100 fixed w-full ${navBg ? 'bg-[#0f142ed9] shadow-md ' : 'fixed'} `}>
             <div className='flex items-center h-full justify-between w-[90%] mx-auto'>
                 <Link href={'/'} className='flex items-center space-x-2'>
                     <div className='size-10 bg-white rounded-full flex items-center justify-center flex-col'>
@@ -46,13 +46,13 @@ function DestopNavbar({openNav}:props) {
                     }
                 </div>
                 <div className='flex items-center space-x-4'>
-                    <a href='/images/asad.pdf' download='Asaduzzaman-CV.pdf' className='px-8 py-3.5 cursor-pointer rounded-lg bg-blue-800 hover:bg-blue-900 transition-all duration-300 text-white flex items-center space-x-2'>
+                    <a href='/images/resume-(2).pdf' download='Asaduzzaman-CV.pdf' className='px-8 py-3.5 cursor-pointer rounded-lg bg-blue-800 hover:bg-blue-900 transition-all duration-300 text-white flex items-center space-x-2'>
                         <BiDownload className='size-5' />
                         Download CV
                     </a>
                     <HiBars3BottomRight
-                    onClick={openNav}
-                     className='size-8 cursor-pointer text-white lg:hidden ' />
+                        onClick={openNav}
+                        className='size-8 cursor-pointer text-white lg:hidden ' />
                 </div>
 
             </div>
