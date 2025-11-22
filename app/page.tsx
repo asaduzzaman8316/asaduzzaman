@@ -10,6 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
 import TargetCursor from "./Animation/TargetCursor";
+import Whatsapp from "@/components/Home/Whtasapp/Whatsapp";
 
 export default function Home() {
   useEffect(() => {
@@ -31,6 +32,7 @@ export default function Home() {
         hideDefaultCursor={true}
         parallaxOn={true}
       />
+      <Whatsapp />
       <Hero />
       <Services />
       <Project />

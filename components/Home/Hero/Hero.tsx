@@ -53,7 +53,7 @@ function Hero() {
             <ParticlesHero />
 
             <div className='w-full h-full'>
-                {/* Only render Lanyard when ready and not scrolling heavily */}
+                {/* Only render Lanyard when ready and not scrolling */}
                 {shouldRenderLanyard && (
                     <Suspense fallback={<div className="w-full h-full" />}>
                         <div style={{
