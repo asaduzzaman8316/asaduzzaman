@@ -9,6 +9,7 @@ import Skills from "@/components/Home/Skills/Skills";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
+import TargetCursor from "./Animation/TargetCursor";
 
 export default function Home() {
   useEffect(() => {
@@ -25,7 +26,11 @@ export default function Home() {
   }, [])
   return (
     <div id="home" className="overflow-hidden ">
-      
+      <TargetCursor
+        spinDuration={2}
+        hideDefaultCursor={true}
+        parallaxOn={true}
+      />
       <Hero />
       <Services />
       <Project />
