@@ -1,0 +1,26 @@
+'use client'
+import React, { useEffect, useState } from 'react'
+
+function Cursor() {
+    const [position, setPosition] = useState({ x: 0, y: 0 })
+    
+    useEffect(() => {
+        const moveHandler = (e: MouseEvent) => {
+            setPosition({ x: e.clientX, y: e.clientY })
+        }
+        
+        window.addEventListener('mousemove', moveHandler)
+        return () => window.removeEventListener('mousemove', moveHandler)
+    }, []) // Added empty dependency array
+    
+    return (
+        <div
+            className='pointer-events-none fixed top-0 left-0 z-9999'
+            style={{ transform: `translate(${position.x - 40}px, ${position.y - 40}px)` }}
+        >
+            <div className='size-20 rounded-full bg-linear-to-r from-pink-500 to-blue-500 blur-2xl opacity-80' />
+        </div>
+    )
+}
+
+export default Cursor

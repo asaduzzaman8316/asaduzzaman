@@ -9,8 +9,8 @@ import Skills from "@/components/Home/Skills/Skills";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
-import TargetCursor from "./Animation/TargetCursor";
 import Whatsapp from "@/components/Home/Whtasapp/Whatsapp";
+import Cursor from "./Animation/Cursor";
 
 export default function Home() {
   useEffect(() => {
@@ -27,11 +27,12 @@ export default function Home() {
   }, [])
   return (
     <div id="home" className="overflow-hidden ">
-      <TargetCursor
+      {/* <TargetCursor
         spinDuration={2}
         hideDefaultCursor={true}
         parallaxOn={true}
-      />
+      /> */}
+      <Cursor />
       <Whatsapp />
       <Hero />
       <Services />
