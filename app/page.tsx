@@ -33,7 +33,7 @@ export default function Home() {
       {!introFinish && <IntroAnimation finish={() => setIntrFinish(true)} />}
       {introFinish && (
 
-        <div id="home" className="overflow-hidden min-h-screen">
+        <div id="home" className=" relative overflow-x-clip min-h-screen">
 
           <Cursor />
           <Whatsapp />
