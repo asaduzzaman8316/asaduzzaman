@@ -8,11 +8,13 @@ import Services from "@/components/Home/Services/Services";
 import Skills from "@/components/Home/Skills/Skills";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Whatsapp from "@/components/Home/Whtasapp/Whatsapp";
 import Cursor from "./Animation/Cursor";
+import IntroAnimation from "./Animation/IntroAnimation";
 
 export default function Home() {
+  const [introFinish, setIntrFinish] = useState(false)
   useEffect(() => {
     const initAOS = async () => {
       await import('aos');
@@ -26,21 +28,24 @@ export default function Home() {
     initAOS()
   }, [])
   return (
-    <div id="home" className="overflow-hidden ">
-      {/* <TargetCursor
-        spinDuration={2}
-        hideDefaultCursor={true}
-        parallaxOn={true}
-      /> */}
-      <Cursor />
-      <Whatsapp />
-      <Hero />
-      <Services />
-      <Project />
-      <Resume />
-      <Skills />
-      <Blog />
-      <Contact />
-    </div>
+
+    <>
+      {!introFinish && <IntroAnimation finish={() => setIntrFinish(true)} />}
+      {introFinish && (
+
+        <div id="home" className="overflow-hidden min-h-screen">
+
+          <Cursor />
+          <Whatsapp />
+          <Hero />
+          <Services />
+          <Project />
+          <Resume />
+          <Skills />
+          <Blog />
+          <Contact />
+        </div>
+      )}
+    </>
   );
 }

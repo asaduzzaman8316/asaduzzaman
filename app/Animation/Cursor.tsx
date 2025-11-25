@@ -11,7 +11,7 @@ function Cursor() {
         
         window.addEventListener('mousemove', moveHandler)
         return () => window.removeEventListener('mousemove', moveHandler)
-    }, []) // Added empty dependency array
+    }, []) 
     
     return (
         <div
