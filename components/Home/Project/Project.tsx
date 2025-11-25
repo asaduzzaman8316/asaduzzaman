@@ -1,10 +1,33 @@
+// Custom hook to check if the screen is mobile-sized (less than md breakpoint)
+const useIsMobile = (breakpoint = 668) => {
+    const [isMobile, setIsMobile] = useState(false);
 
-import {useMemo, useRef, useState } from 'react'
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < breakpoint);
+        };
+
+        // Set initial state
+        checkMobile();
+
+        // Add event listener for window resize
+        window.addEventListener('resize', checkMobile);
+
+        // Cleanup the event listener on component unmount
+        return () => window.removeEventListener('resize', checkMobile);
+    }, [breakpoint]);
+
+    return isMobile;
+};
+
+
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, useMotionValueEvent, useScroll, motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 function Project() {
+    const isMobile = useIsMobile();
     const scenRef = useRef(null)
     const projects = useMemo(() => [
         {
@@ -12,7 +35,7 @@ function Project() {
             title: 'Modern E-Commerce in TypeScript',
             link: 'https://asad-mart.vercel.app/',
             bg: '#3c2752',
-            image: '/images/p6.png',
+            image: isMobile ? '/images/mb2.png' : '/images/p1.png',
             git: 'https://github.com/asaduzzaman8316/Asad-Shop'
         },
         {
@@ -20,7 +43,7 @@ function Project() {
             title: 'E-Learning Management System',
             link: 'https://lms8316.vercel.app/',
             bg: '#0284c7',
-            image: '/images/l2.png',
+            image: isMobile ? '/images/mb1.png' : '/images/l2.png',
             git: 'https://github.com/asaduzzaman8316/learning-management-system'
         },
         {
@@ -36,7 +59,7 @@ function Project() {
             title: 'Mind Game',
             link: 'https://tictactoe8316.netlify.app/',
             bg: '#7c3aed',
-            image: '/images/p3.png',
+            image: isMobile ? '/images/mb3.png' : '/images/p3.png',
             git: 'https://github.com/asaduzzaman8316/Tic-Tac-Toc'
         },
     ], [])
@@ -45,7 +68,7 @@ function Project() {
         target: scenRef,
         offset: ['start start', 'end end']
     })
-    
+
     const changePoint = projects.map((_, i) => (i + 1) / projects.length)
     const [activeIndex, setActiveIndex] = useState(0)
 
@@ -57,7 +80,7 @@ function Project() {
     const activeProject = projects[activeIndex];
 
     return (
-        <section 
+        <section
             id='projects'
             ref={scenRef}
             className='text-white'
@@ -71,14 +94,13 @@ function Project() {
                 <h2 className='text-3xl md:text-4xl font-semibold text-center mb-6 md:mb-8 px-4'>
                     Projects
                 </h2>
-                
+
                 <div className='relative flex-1 flex items-center justify-center px-4'>
                     {projects.map((project, idx) => (
                         <div
                             key={project.id}
-                            className={`absolute  flex flex-col w-[85%] max-w-[1200px] items-center justify-center transition-all duration-500 ${
-                                activeIndex === idx ? 'opacity-100 z-20' : 'opacity-0 z-0'
-                            }`}
+                            className={`absolute  flex flex-col w-[85%] max-w-[1200px] items-center justify-center transition-all duration-500 ${activeIndex === idx ? 'opacity-100 z-20' : 'opacity-0 z-0'
+                                }`}
                         >
                             <div className='w-full max-w-5xl mx-auto'>
                                 <AnimatePresence mode='wait'>
@@ -96,17 +118,17 @@ function Project() {
                                     )}
                                 </AnimatePresence>
 
-                                <div 
+                                <div
                                     className='relative w-full h-[50vh] md:h-[55vh] overflow-hidden rounded-lg bg-black/20 shadow-2xl'
                                     style={{
                                         transition: 'box-shadow 250ms ease'
                                     }}
                                 >
-                                    <Image 
-                                        src={project.image} 
-                                        alt={project.title} 
+                                    <Image
+                                        src={project.image}
+                                        alt={project.title}
                                         fill
-                                        className='object-cover'
+                                        className='object-cover h-full w-full'
                                         style={{
                                             filter: 'drop-shadow(0 16px 40px rgba(0,0,0,0.65))',
                                             transition: 'filter 200ms ease'
@@ -116,17 +138,17 @@ function Project() {
                                 </div>
 
                                 <div className='flex gap-4 justify-center mt-6'>
-                                    <Link 
-                                        href={project.link} 
-                                        target="_blank" 
+                                    <Link
+                                        href={project.link}
+                                        target="_blank"
                                         rel="noopener noreferrer"
                                         className='px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors'
                                     >
                                         Live Demo
                                     </Link>
-                                    <a 
-                                        href={project.git} 
-                                        target="_blank" 
+                                    <a
+                                        href={project.git}
+                                        target="_blank"
                                         rel="noopener noreferrer"
                                         className='px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors'
                                     >
