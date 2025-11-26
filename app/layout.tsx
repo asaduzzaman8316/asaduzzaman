@@ -15,6 +15,7 @@ const font = Inter({
 export const metadata: Metadata = {
   title: "Asaduzzaman | Next.js",
   description: "Asaduzzaman portfolio , asaduzzaman8316",
+
 };
 
 export default function RootLayout({
@@ -24,6 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="google-site-verification" content="qivNvac31xAS1b7IeN183t0fKFja4DILfO07pN-U-1A" />
       <body
         className={`${font.className} antialiased bg-[#0d0d1f]`}
       >
