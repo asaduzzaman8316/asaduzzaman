@@ -4,7 +4,6 @@ import "./globals.css";
 import Nav from "@/components/Share/Navbar/Nav";
 import Footer from "@/components/Share/Footer/Footer";
 import ScrollToTop from "@/components/Share/ScrollToTop/ScrollToTop";
-import Script from "next/script";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const font = Inter({

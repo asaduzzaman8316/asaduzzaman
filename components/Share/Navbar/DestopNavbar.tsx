@@ -26,7 +26,7 @@ function DestopNavbar({ openNav }: props) {
                     <div className='size-10 bg-white rounded-full flex items-center justify-center flex-col'>
                         <FaCode className='size-5 text-black' />
                     </div>
-                    <h1 className='text-lg hidden sm:block md:text-2xl text-white font-bold'>Asaduzzaman</h1>
+                    <h2 className='text-lg hidden sm:block md:text-2xl text-white font-bold'>Asaduzzaman</h2>
                 </Link>
                 <div className='hidden lg:flex items-center space-x-10'>
                     {

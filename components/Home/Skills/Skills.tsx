@@ -1,5 +1,5 @@
 "use client"
-import { SiCplusplus, SiJavascript, SiNextdotjs, SiReact, SiTailwindcss, SiTypescript } from 'react-icons/si'
+import { SiCplusplus, SiGit, SiJavascript, SiNextdotjs, SiReact, SiTailwindcss, SiTypescript } from 'react-icons/si'
 import { TbCircleLetterC } from 'react-icons/tb'
 import Tilt from 'react-parallax-tilt'
 function Skills() {
@@ -37,6 +37,11 @@ function Skills() {
         {
             name: 'C++',
             icon: <SiCplusplus />,
+            parcentage: 95
+        },
+        {
+            name:'Git',
+            icon:<SiGit/>,
             parcentage: 95
         }
 
