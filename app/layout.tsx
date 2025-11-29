@@ -26,16 +26,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <meta name="google-site-verification" content="qivNvac31xAS1b7IeN183t0fKFja4DILfO07pN-U-1A" />
+      <head>
+        <meta name="google-site-verification" content="qivNvac31xAS1b7IeN183t0fKFja4DILfO07pN-U-1A" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
+
+      </head>
       <body
         className={`${font.className} antialiased bg-[#0d0d1f]`}
       >
-        <SpeedInsights />
         <Nav />
         {children}
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
         <Footer />
         <ScrollToTop />
+        <SpeedInsights />
       </body>
     </html>
   );
