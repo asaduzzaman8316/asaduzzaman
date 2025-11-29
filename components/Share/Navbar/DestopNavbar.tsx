@@ -20,7 +20,7 @@ function DestopNavbar({ openNav }: props) {
         return () => window.removeEventListener('scroll', hnadler)
     }, [])
     return (
-        <div className={`transition-all duration-300  h-[8vh] z-100 fixed w-full ${navBg ? 'bg-[#0f142ed9] shadow-md backdrop-blur-md ' : 'fixed'} `}>
+        <section className={`transition-all duration-300  h-[8vh] z-100 fixed w-full ${navBg ? 'bg-[#0f142ed9] shadow-md backdrop-blur-md ' : 'fixed'} `}>
             <div className='flex items-center h-full justify-between w-[90%] mx-auto'>
                 <Link href={'/'} className='flex items-center space-x-2'>
                     <div className='size-10 bg-white rounded-full flex items-center justify-center flex-col'>
@@ -56,7 +56,7 @@ function DestopNavbar({ openNav }: props) {
                 </div>
 
             </div>
-        </div>
+        </section>
     )
 }
 

@@ -7,24 +7,46 @@ import Image from "next/image";
 import { Blog } from "../Type/blog";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Asaduzzaman Portfolio",
+    description: "Hi! i am Asaduzzaman a Front-End Web Devloper.",
+    keywords: ['asaduzzaman', 'asad', 'asaduzzaman8316', 'asad portfolio', 'portfolio', 'web devloper', 'front-end devloper', 'mern devloper', 'best devloper', 'asaduzzaman-dev.vercel.app', 'asaduzzaman-dev', 'asaduzzaman.dev', 'asaduzzamandev', 'asaduzzamancse'],
+
+    robots: {
+        index: true,
+        follow: true,
+        nocache: false,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            "max-snippet": -1,
+        }
+    },
+    alternates: {
+        canonical: 'http://asaduzzaman-dev.vercel.app/1'
+    }
+};
 
 async function Page({ params }: { params: Promise<Params> }) {
     const { blogid } = await params;
-    
+
     try {
         const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-        const res = await fetch(`${baseUrl}/blog.json`, { 
+        const res = await fetch(`${baseUrl}/blog.json`, {
             cache: 'no-store',
             next: { revalidate: 60 }
         })
-        
+
         if (!res.ok) {
             throw new Error(`Failed to fetch blogs: ${res.status}`);
         }
-        
+
         const blog: Blog[] = await res.json()
         const specificBlog = blog && blog.find(item => item.id === blogid)
-        
+
         if (!specificBlog) {
             return (
                 <div className='bg-gray-900 min-h-screen pt-28 pb-16 flex items-center justify-center'>
@@ -36,9 +58,9 @@ async function Page({ params }: { params: Promise<Params> }) {
                 </div>
             )
         }
-        
+
         console.log(specificBlog)
-        
+
         return (
             <>
                 {specificBlog &&

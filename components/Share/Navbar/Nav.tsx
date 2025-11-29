@@ -8,10 +8,10 @@ function Nav() {
     const openNavHandler = ()=> setShowNva(true)
     const closeNavHandler = ()=> setShowNva(false)
     return (
-        <div>
+        <nav>
             <DestopNavbar  openNav={openNavHandler}/>
             <MobileNavbar showNav={showNva} closeNav={closeNavHandler}/>
-        </div>
+        </nav>
     )
 }
 

@@ -29,7 +29,7 @@ export default function Home() {
   }, [])
   return (
 
-    <>
+    <main>
       {!introFinish && <IntroAnimation finish={() => setIntrFinish(true)} />}
       {introFinish && (
 
@@ -46,6 +46,6 @@ export default function Home() {
           <Contact />
         </div>
       )}
-    </>
+    </main>
   );
 }
