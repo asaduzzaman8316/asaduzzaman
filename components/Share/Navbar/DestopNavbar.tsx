@@ -46,7 +46,7 @@ function DestopNavbar({ openNav }: props) {
                     }
                 </div>
                 <div className='flex items-center space-x-4'>
-                    <a href='/images/resume-(2).pdf' download='Asaduzzaman-CV.pdf' className='px-8 py-3.5 cursor-pointer rounded-lg bg-blue-800 hover:bg-blue-900 transition-all duration-300 text-white flex items-center space-x-2'>
+                    <a href='/images/Asaduzzaman.pdf' download='Asaduzzaman-CV.pdf' className='px-8 py-3.5 cursor-pointer rounded-lg bg-blue-800 hover:bg-blue-900 transition-all duration-300 text-white flex items-center space-x-2'>
                         <BiDownload className='size-5' />
                         Download CV
                     </a>

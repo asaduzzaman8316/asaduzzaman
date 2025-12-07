@@ -56,11 +56,11 @@ function Project() {
         },
         {
             id: '04',
-            title: 'Mind Game',
-            link: 'https://tictactoe8316.netlify.app/',
+            title: 'Sylhet PolyTechnic Institute',
+            link: 'https://spi-smart-campus.vercel.app/',
             bg: '#7c3aed',
-            image: isMobile ? '/images/mb3.png' : '/images/p3.png',
-            git: 'https://github.com/asaduzzaman8316/Tic-Tac-Toc'
+            image: isMobile ? '/images/spi.png' : '/images/spi.png',
+            git: 'https://github.com/asaduzzaman8316/spi-smart-campus'
         },
     ], [])
 
