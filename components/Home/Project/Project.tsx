@@ -57,7 +57,7 @@ function Project() {
         {
             id: '04',
             title: 'Sylhet PolyTechnic Institute',
-            link: 'https://spi-smart-campus.vercel.app/',
+            link: 'https://spismartcampus.vercel.app/',
             bg: '#7c3aed',
             image: isMobile ? '/images/spi.png' : '/images/spi.png',
             git: 'https://github.com/asaduzzaman8316/spi-smart-campus'
